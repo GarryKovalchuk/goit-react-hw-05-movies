@@ -46,12 +46,16 @@ const Movies = () => {
         <ul className={css.MovList}>
           {movies.map(({ id, title, poster }) => (
             <li className={css.MovItem} key={id}>
-              <MovieLink to={`/movies/${id}`} state={{ from: location }}>
+              <styled
+                className={css.MovieLink}
+                to={`/movies/${id}`}
+                state={{ from: location }}
+              >
                 <img claccName={css.MovImg} src={poster} alt={title} />
                 <div className={css.MovTitle}>
                   <h3>{title}</h3>
                 </div>
-              </MovieLink>
+              </styled>
             </li>
           ))}
         </ul>

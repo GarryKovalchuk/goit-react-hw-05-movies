@@ -46,14 +46,22 @@ const MovieDetails = () => {
 
           <ul className={css.DetList}>
             <li>
-              <InfoLink to={'cast'} state={{ from: location?.state?.from }}>
+              <styled
+                className={css.InfoLink}
+                to={'cast'}
+                state={{ from: location?.state?.from }}
+              >
                 Cast
-              </InfoLink>
+              </styled>
             </li>
             <li>
-              <InfoLink to={'reviews'} state={{ from: location?.state?.from }}>
+              <styled
+                className={css.InfoLink}
+                to={'reviews'}
+                state={{ from: location?.state?.from }}
+              >
                 Reviews
-              </InfoLink>
+              </styled>
             </li>
           </ul>
           <Outlet />
