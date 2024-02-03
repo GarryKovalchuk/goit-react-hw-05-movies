@@ -52,13 +52,9 @@ const MovieDetails = () => {
               </NavLink>
             </li>
             <li>
-              <styled
-                className={css.InfoLink}
-                to={'reviews'}
-                state={{ from: location?.state?.from }}
-              >
+              <NavLink to={'reviews'} state={{ from: location?.state?.from }}>
                 Reviews
-              </styled>
+              </NavLink>
             </li>
           </ul>
           <Outlet />
