@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchTrending } from '../../components/ServiceAPI/api';
 import css from './Home.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,16 +18,12 @@ const Home = () => {
         <ul className={css.MovieList}>
           {movies.map(({ id, title, poster }) => (
             <li className={css.MovieItem} key={id}>
-              <styled
-                className={css.MovieLink}
-                to={`/movies/${id}`}
-                state={{ from: location }}
-              >
+              <NavLink to={`/movies/${id}`} state={{ from: location }}>
                 <img className={css.HomeImg} src={poster} alt={title} />
                 <div className={css.MovieTitle}>
                   <h3>{title}</h3>
                 </div>
-              </styled>
+              </NavLink>
             </li>
           ))}
         </ul>

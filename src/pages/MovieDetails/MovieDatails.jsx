@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { fetchMovieDetails } from '../../components/ServiceAPI/api';
 import css from './MovieDetails.module.css';
+import { NavLink } from 'react-router-dom';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -46,13 +47,9 @@ const MovieDetails = () => {
 
           <ul className={css.DetList}>
             <li>
-              <styled
-                className={css.InfoLink}
-                to={'cast'}
-                state={{ from: location?.state?.from }}
-              >
+              <NavLink to={'cast'} state={{ from: location?.state?.from }}>
                 Cast
-              </styled>
+              </NavLink>
             </li>
             <li>
               <styled

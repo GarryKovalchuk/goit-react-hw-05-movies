@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { fetchByQuery } from '../../components/ServiceAPI/api';
 import css from './Movies.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -46,16 +47,12 @@ const Movies = () => {
         <ul className={css.MovList}>
           {movies.map(({ id, title, poster }) => (
             <li className={css.MovItem} key={id}>
-              <styled
-                className={css.MovieLink}
-                to={`/movies/${id}`}
-                state={{ from: location }}
-              >
+              <NavLink to={`/movies/${id}`} state={{ from: location }}>
                 <img claccName={css.MovImg} src={poster} alt={title} />
                 <div className={css.MovTitle}>
                   <h3>{title}</h3>
                 </div>
-              </styled>
+              </NavLink>
             </li>
           ))}
         </ul>
