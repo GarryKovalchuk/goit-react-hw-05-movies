@@ -36,9 +36,9 @@ const MovieDetails = () => {
                 {title} ({releaseYear})
               </h2>
               <p>User Score: {userScore}%</p>
-              <h3>Overview</h3>
+              <h3 className={css.DetDescr}>Overview</h3>
               <p>{overview}</p>
-              <h3>Genres</h3>
+              <h3 className={css.DetDescr}>Genres</h3>
               <p>{genres.map(({ name }) => name).join(' ')}</p>
             </div>
           </div>
