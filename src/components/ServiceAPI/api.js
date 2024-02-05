@@ -1,5 +1,6 @@
 import axios from 'axios';
 import noPhoto from '../Assistants/image01.jpeg';
+import noPoster from '../Assistants/img002.jpg';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
@@ -16,7 +17,7 @@ export const fetchTrending = async () => {
       results.map(({ id, title, poster_path: poster }) => ({
         id,
         title,
-        poster: IMG_URL + poster,
+        poster: poster ? IMG_URL + poster : noPoster,
       }))
     )
     .catch(error => {
@@ -31,7 +32,7 @@ export const fetchByQuery = async query => {
       results.map(({ id, title, poster_path: poster }) => ({
         id,
         title,
-        poster: IMG_URL + poster,
+        poster: poster ? IMG_URL + poster : noPoster,
       }))
     )
     .catch(error => {
@@ -55,7 +56,7 @@ export const fetchMovieDetails = movieId => {
         },
       }) => ({
         id,
-        poster: IMG_URL + poster,
+        poster: poster ? IMG_URL + poster : noPoster,
         title,
         releaseYear: new Date(releaseYear).getFullYear(),
         userScore: Math.round(userScore * 10),
