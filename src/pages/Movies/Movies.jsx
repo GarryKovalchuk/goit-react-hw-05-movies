@@ -19,8 +19,6 @@ const Movies = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const response = await fetchByQuery(query);
-    setMovies(response);
     setSearchParams({ query });
     setQuery('');
   };
