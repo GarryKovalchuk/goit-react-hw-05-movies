@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchTrending } from '../../components/ServiceAPI/api';
 import css from './Home.module.css';
-import { NavLink } from 'react-router-dom';
+import MovieList from 'components/MovieList/MovieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -14,20 +14,7 @@ const Home = () => {
   return (
     <div className={css.HomeContainer}>
       <h1 className={css.HomeTitle}>Tranding today</h1>
-      {movies.length > 0 && (
-        <ul className={css.MovieList}>
-          {movies.map(({ id, title, poster }) => (
-            <li className={css.MovieItem} key={id}>
-              <NavLink to={`/movies/${id}`} state={{ from: location }}>
-                <img className={css.HomeImg} src={poster} alt={title} />
-                <div className={css.MovieTitle}>
-                  <h3>{title}</h3>
-                </div>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      )}
+      {movies.length > 0 && <MovieList movies={movies} location={location} />}
     </div>
   );
 };
