@@ -3,9 +3,9 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import { fetchByQuery } from '../../components/ServiceAPI/api';
 import css from './Movies.module.css';
 import { NavLink } from 'react-router-dom';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams('');
   const location = useLocation();
@@ -16,31 +16,13 @@ const Movies = () => {
     searchQuery && fetchByQuery(searchQuery).then(setMovies);
   }, [searchQuery]);
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-
+  const handleSearch = query => {
     setSearchParams({ query });
-    setQuery('');
-  };
-  const onChange = e => {
-    setQuery(e.target.value);
   };
 
   return (
     <>
-      <div className={css.FormDiv}>
-        <form className={css.Form} onSubmit={handleSubmit}>
-          <input
-            className={css.Input}
-            type="text"
-            value={query}
-            onChange={onChange}
-          />
-          <button className={css.MovButton} type="submit">
-            search
-          </button>
-        </form>
-      </div>
+      <SearchForm onSearch={handleSearch} />
       {movies.length > 0 && (
         <ul className={css.MovList}>
           {movies.map(({ id, title, poster }) => (
